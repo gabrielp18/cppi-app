@@ -1,6 +1,6 @@
-streamlit
-pandas
-numpy
+streamlit==0.80.0
+pandas==1.0.5
+numpy==1.18.5
+plotly==4.14.3
 datetime
-plotly
 scipy.stats
