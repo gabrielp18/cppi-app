@@ -248,8 +248,7 @@ def main():
             drawdown_ratio = None
             floor_ = st.sidebar.slider("Piso (%)", 0.0, 100.0, step=1.0, value= 80.0, key='floor_')
         else:
-            drawdown_ratio = st.sidebar.slider("Taxa de Drawdown (%)", 0.0, 50.0, step=1.0, value= 10.0, key='drawdown')
-            drawdown_ratio = drawdown_ratio/100
+            drawdown_ratio = 0.3
 
         R = cppi_func(ind, riskfree_rate=rf_ratio/100, m=m_ratio, start=1000, floor=floor_/100 ,drawdown=drawdown_ratio, periods_per_year=52)
 
