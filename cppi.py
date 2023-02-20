@@ -13,8 +13,6 @@ def main():
     st.markdown(
         'CPPI é uma estratégia de negociação que oferece potencial de valorização de \
         um ativo de risco, ao mesmo tempo em que fornece uma garantia de capital contra o drawdown.')
-    st.markdown(
-        'O Método Não-Paramétrico apresenta um piso fixo, o qual é setado pelo investidor.')
     st.sidebar.title("Variáveis do Modelo CPPI")
 
 
@@ -194,7 +192,8 @@ def main():
     method_name = st.sidebar.selectbox("Methods:", ("Estratégia CPPI Não-Paramétrico", "Estratégia CPPI Paramétrico"))
 
     if method_name == 'Estratégia CPPI Não-Paramétrico':
-        # st.sidebar.subheader("Choose Equity Index")
+        st.markdown(
+        'O Método Não-Paramétrico apresenta um piso fixo, o qual é setado pelo investidor.')
         classifier = st.selectbox("Escolha o Ativo", list(index_names['Index Names']))
         clas2 = index_names[index_names['Index Names'] == classifier].index[0]
         floor_set = st.slider('Escolha o Piso (%)', 0.0, 1.0, 0.5)
@@ -225,6 +224,8 @@ def main():
         plot_metrics(Q, classifier=classifier)
 
     elif method_name == 'Estratégia CPPI Paramétrico':
+        st.markdown(
+        'O Método Paramétrico apresenta um piso variável com o tempo, setado através do Drawdown.')
         classifier = st.selectbox("Escolha o Ativo", list(index_names['Index Names']))
         clas2 = index_names[index_names['Index Names'] == classifier].index[0]
 
