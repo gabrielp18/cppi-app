@@ -2,5 +2,5 @@ streamlit
 pandas
 numpy
 datetime
-plotly.graph_objects
+plotly
 scipy.stats
