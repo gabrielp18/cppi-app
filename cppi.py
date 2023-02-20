@@ -1,7 +1,6 @@
 import streamlit as st ##streamplit package don't work with eikon package!!
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 import datetime
 import plotly.graph_objects as go
 import scipy.stats
