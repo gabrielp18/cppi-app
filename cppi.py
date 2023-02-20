@@ -13,7 +13,8 @@ def main():
     st.markdown(
         'CPPI é uma estratégia de negociação que oferece potencial de valorização de \
         um ativo de risco, ao mesmo tempo em que fornece uma garantia de capital contra o drawdown.')
-
+    st.markdown(
+        'O Método Não-Paramétrico apresenta um piso fixo, o qual é setado pelo investidor.')
     st.sidebar.title("Variáveis do Modelo CPPI")
 
 
@@ -103,7 +104,7 @@ def main():
                                 mode='lines',
                                 name='Buy & Hold {}'.format(classifier)))
             fig.add_trace(go.Scatter(x=inp['floor'].index, y=inp['floor'].iloc[:, 0],
-                                line=dict(color='black', width=4, dash='dot'), 
+                                line=dict(color='white', width=4, dash='dot'), 
                                 name='Piso para o investimento'))
 
             fig.update_layout(xaxis_title='Data',
@@ -196,6 +197,7 @@ def main():
         # st.sidebar.subheader("Choose Equity Index")
         classifier = st.selectbox("Escolha o Ativo", list(index_names['Index Names']))
         clas2 = index_names[index_names['Index Names'] == classifier].index[0]
+        floor_set = st.slider('Escolha o Piso (%)', 0.0, 1.0, 0.5)
 
         df_pct = df_abs[[clas2]].pct_change().dropna()
 
@@ -207,9 +209,9 @@ def main():
         ind = df_pct[[clas2]][start_date:end_date]  #Getting the date based on the index name and the date interval
 
         st.subheader("**Análise de Risco**")
-        st.markdown('*Critérios: Taxa Livre de Risco (Selic): 13.75%, Piso: 80%, Sem Att Drawdown*')
+        st.markdown('*Critérios: Taxa Livre de Risco (Selic): 13.75%, Piso: {piso}%, Sem Att Drawdown*'.format(piso=floor_set*100))
 
-        Q = cppi_func(ind)
+        Q = cppi_func(ind, floor=floor_set)
 
         # Comparing the risk profile and distribution characteristics
         metric1 = Q['Risky Wealth'].pct_change().dropna()   # Risky Portfolio
