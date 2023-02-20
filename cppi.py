@@ -95,16 +95,6 @@ def main():
         return backtest_result
 
     def plot_metrics(inp, classifier):
-            # fig, ax = plt.subplots()
-            # ax = inp['Wealth'].iloc[:, 0].plot(figsize=(18, 10), color = 'blue', linewidth= 3, label='Estratégia CPPI')
-            # inp['Risky Wealth'].iloc[:, 0].plot(ax=ax, style='k',linewidth= 2, label='Buy & Hold {}'.format(classifier))
-            # inp['floor'].iloc[:, 0].plot(ax=ax, color='r', linestyle='--', label='Piso para o investimento', linewidth= 3)
-            # ax.set_xlabel('Date', fontsize=20, fontweight = 'bold')
-            # ax.set_ylabel('Index Values', fontsize=20, fontweight = 'bold')
-
-            # ax.tick_params(labelsize=18)
-            # ax.legend(fontsize="xx-large", frameon = False)
-            # st.pyplot(fig)
             fig = go.Figure()
             fig.add_trace(go.Scatter(x=inp['Wealth'].index, y=inp['Wealth'].iloc[:, 0],
                                 mode='lines',
@@ -200,7 +190,7 @@ def main():
 
     #Selecting the CPPI Method
     st.sidebar.subheader("Escolha um método")
-    method_name = st.sidebar.selectbox("Methods:", ("Estratégia CPPI Não-Paramétrico", "Estratégia CPPI Paramétrico", "G.Brownian Motion CPPI Strategy"))
+    method_name = st.sidebar.selectbox("Methods:", ("Estratégia CPPI Não-Paramétrico", "Estratégia CPPI Paramétrico"))
 
     if method_name == 'Estratégia CPPI Não-Paramétrico':
         # st.sidebar.subheader("Choose Equity Index")
