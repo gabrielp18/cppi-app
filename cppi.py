@@ -1,4 +1,4 @@
-import streamlit as st ##streamplit package don't work with eikon package!!
+import streamlit as st
 import pandas as pd
 import numpy as np
 import datetime
