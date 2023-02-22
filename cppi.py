@@ -101,7 +101,7 @@ def main():
                                 mode='lines',
                                 name='Buy & Hold {}'.format(classifier)))
             fig.add_trace(go.Scatter(x=inp['floor'].index, y=inp['floor'].iloc[:, 0],
-                                line=dict(color='white', width=4, dash='dot'), 
+                                line=dict(color='black', width=4, dash='dot'), 
                                 name='Piso para o investimento'))
 
             fig.update_layout(xaxis_title='Data',
