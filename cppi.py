@@ -106,8 +106,8 @@ def main():
 
             fig.update_layout(xaxis_title='Data',
                    yaxis_title='Patrimônio Acumulado',
-                   width=1300,
-                   height=650,)
+                   width=1000,
+                   height=550,)
 
             st.plotly_chart(fig, use_container_width=False)
 
